@@ -1,6 +1,15 @@
+$secondary-red: #ffcbcb;
+
+
 .header {
+
+    display: flex;
+    padding-bottom: 1vw;
+    background-color: $secondary-red;
+
     .header-principal {
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-size: 2rem;
+        font-size: 2vw;
+
     }
 }

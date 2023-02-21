@@ -1,10 +1,17 @@
+$secondary-red: #e7afaf;
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+body {
+  overflow: hidden;
+  background-color: $secondary-red;
+}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+
