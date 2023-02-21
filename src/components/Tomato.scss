@@ -1,14 +1,16 @@
 $primary-red: #ee6464;
 $background-red: #fdbfbf;
+$button-red: #c23a3a;
 
 .tomato {
     width: 100vw;
-    height: 80vh;
+    height: 85vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
     padding-top: 2vw;
     background-color: #ee6464;
+    position: relative;
 
     @media screen and (max-width: 1000px) {
         max-height: 500px;
@@ -17,7 +19,6 @@ $background-red: #fdbfbf;
     .inputContainer { 
         display: flex;
         flex-direction: column;
-        border: solid 1px #000;
         flex: 2;
 
         .inputTime {
@@ -27,7 +28,7 @@ $background-red: #fdbfbf;
         outline: solid 1px $primary-red;
         padding: 5px;
         border-radius: 0.5vw;
-        color: $background-red;
+        color: $primary-red;
         font-weight: 500;
         
         &::-webkit-outer-spin-button,
@@ -69,13 +70,27 @@ $background-red: #fdbfbf;
     }
 }
 
+
 .tomatoImage {
     width: 25vw;
     display: flex;
-    border: solid 1px #000;
-
-    @media screen and (max-width: 1000px) {
+    position: absolute;
+    margin-left: 36vw;
+    margin-top: 10vw;
+ 
+    @media screen and (min-width: 900px) and (max-width: 1000px) {
         max-width: 200px;
+        margin-left: 39vw;
+    }
+
+    @media screen and (min-width: 700px) and (max-width: 900px) {
+        max-width: 150px;
+        margin-left: 40vw
+    }
+
+    @media screen and (min-width: 300px) and (max-width: 500px) {
+        max-width: 100px;
+        margin-left: 37vw;
     }
 
     &::selection {
@@ -83,4 +98,35 @@ $background-red: #fdbfbf;
         background-color: transparent;
     }
 }
+
+    .tomatoStart {
+        color: white;
+        display: flex;
+        z-index: 10;
+        justify-content: center;
+        font-size: 3rem;
+        cursor: pointer;
+        width: 10%;
+        height: 10%;
+        margin: 0 44vw;
+        background-color: $button-red;
+        border-radius: 10px;
+        align-items: center;
+        outline: none;
+
+        @media screen and (min-width: 800px) and (max-width: 1200px) {
+            font-size: 2rem;
+            margin-right: 2vw;
+        }
+
+        @media screen and (max-width: 800px) {
+            font-size: 1rem;
+            margin-right: 2vw;
+        }
+
+        &:hover {
+            background-color: white;
+            color: $primary-red
+        }
+    }
 }

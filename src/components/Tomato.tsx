@@ -3,14 +3,40 @@ import React, { useEffect } from 'react'
 import tomato from '../assets/tomato.svg'
 import { useState } from 'react'
 import { useRef } from 'react'
+import gsap from 'gsap'
+import { TimerSettings, useTimer } from 'react-timer-hook'
 
 
 
 const Tomato = () => {
+    
+    
     const [workTime, setWorkTime] = useState<number>(0);
     const [pauseTime, setPauseTime] = useState<number>(0);
     const [maxValue, setMaxValue] = useState<boolean>(false);
 
+    
+    let expiryTimestamp = new Date();
+    expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 10);
+    
+    const {
+        seconds,
+        minutes,
+        hours,
+        days,
+        isRunning,
+        start,
+        pause,
+        resume,
+        restart,
+    } = useTimer({ expiryTimestamp, onExpire: () => console.log('onExpire called') })
+
+    const startFunc = () => {
+        pause
+    }
+    
+    console.log(seconds)
+    
     const setTimer = (value: string) => {
         let workTimer = parseInt(value);
         if (workTimer > 100) {
@@ -41,6 +67,7 @@ const Tomato = () => {
         }
         if (workRef.current?.value === "") {
             setMaxValue(false)
+            setPauseTime(0)
         }
         ;
     }, [workTime])
@@ -53,13 +80,14 @@ const Tomato = () => {
     <div className="tomato justify-center"> 
     <div className="inputContainer"> 
         <p className="inputText"> Time at work (min) </p>
-        <input className="inputTime" type="text" ref={workRef} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTimer(e.target.value)} placeholder='Working time' max="100" min="0"/>
+        <input className="inputTime" type="text" ref={workRef} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTimer(e.target.value)} placeholder='Working time' max="100"/>
         <p className="inputText"> Time to pause (min) </p>
-        <input className="inputTime" type="text" ref={pauseRef} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPauseTimer(e.target.value)} value={pauseTime} max="100" min="0" defaultValue="0"/>
-        {workTime >= 0 && workTime.toString() !== "NaN" ? 
+        <input className="inputTime" type="text" ref={pauseRef} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPauseTimer(e.target.value)} value={pauseTime} max="100"/>
+        {workTime >= 1 && workTime.toString() !== "NaN" ? 
         <p className="inputText"> You have {workTime} minutes of work, then {pauseTime} minutes of pause </p> : null}
         {maxValue ? <p className="inputText"> You have reached max value </p> : null }
     </div>
+        <button className="tomatoStart" onClick={start} > Start </button>
         <img className="tomatoImage mx-auto" src={tomato}/>
     </div>
     )
