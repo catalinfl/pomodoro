@@ -3,7 +3,7 @@ import React, { useEffect, useLayoutEffect } from 'react'
 import tomato from '../assets/tomato.svg'
 import { useState } from 'react'
 import { useRef } from 'react'
-import gsap, { Power2 } from 'gsap'
+import gsap, { Power2, Power4, Power1 } from 'gsap'
 import { useTimer } from 'react-timer-hook'
 import Timer from './Timer'
 
@@ -22,7 +22,9 @@ const Tomato = () => {
     const tomatoAnim = useRef<HTMLDivElement>(null);
     const timeline = useRef<GSAPTimeline | null>(null);
     const tomatoImageRef = useRef<HTMLImageElement>(null)
-    const imageRef = useRef<HTMLImageElement>(null);
+    const inputRef = useRef<HTMLDivElement>(null);
+    const timelineDisappear = useRef<GSAPTimeline | null>(null);
+    const startButtonRef = useRef<HTMLButtonElement>(null)
 
     useLayoutEffect(() => {
         if (!isTimerActive) {
@@ -38,27 +40,65 @@ const Tomato = () => {
         return () => context.revert();
     }
         else {
-            let tween = gsap.fromTo(".tomatoImage", 
+        if (!maxValue) {
+            timelineDisappear.current = gsap.timeline()
+            .fromTo(".tomatoImage", 
             {x: 0},
             {x: -1000,
             duration: 5,
             opacity: 0,
-            onComplete: onComplete,
             ease: Power2.easeInOut,
             rotate: "35deg"
         })
+            .to(".inputContainer", {
+                x: -1000,
+                duration: 2,
+                opacity: 0,
+                ease: Power1.easeOut
+            })
+            .to(".tomatoStart", {
+                scale: 0,
+                duration: 0.5,
+                onComplete: onComplete
+            })
         }
+        else {
+                timelineDisappear.current = gsap.timeline()
+                .fromTo(".tomatoImage", 
+                {x: 10,
+                 y: 35,
+                 scale: 0.8
+                },
+                {x: -1000,
+                duration: 3,
+                opacity: 0,
+                ease: Power2.easeInOut,
+                rotate: "35deg"
+            })
+                .to(".inputContainer", {
+                    x: 1000,
+                    opacity: 0,
+                    duration: 2,
+                    ease: Power4.easeOut
+                })
+                .to(".tomatoStart", {
+                    scale: 0,
+                    duration: 1,
+                    onComplete: onComplete,
+                })
+        }
+    }
     }, [isTimerActive])
         
     const onComplete = () => {
-        tomatoImageRef.current?.remove()
+        tomatoAnim.current?.remove();
+        tomatoImageRef.current?.remove();
+        startButtonRef.current?.remove();
     }
 
     useEffect(() => {
         timeline.current?.reversed(!maxValue);
     }, [maxValue])
-
-    
     
     const setTimer = (value: string) => {
         let workTimer = parseInt(value);
@@ -99,12 +139,19 @@ const Tomato = () => {
     const pauseRef = useRef<HTMLInputElement>(null);
 
     
-    function testFunc(): Date {
+    const testFunc = (): Date => {
         const time = new Date();
         time.setSeconds(time.getSeconds() + workTime)
         return time;
     }
 
+    const startButton = () => {
+        if (workTime > 0) {
+        setIsTimerActive(true);
+        }
+    }
+
+    console.log(workTime)
 
 
   return (
@@ -119,7 +166,7 @@ const Tomato = () => {
         <p className="inputText"> You have {workTime} minutes of work, then {pauseTime} minutes of pause </p> : null}
         {maxValue ? <p className="inputText"> You have reached max value </p> : null }
     </div>
-        <button className="tomatoStart" onClick={() => setIsTimerActive(!isTimerActive)}> {isTimerActive ? "Stop" : "Start"} </button>
+        <button className="tomatoStart" onClick={startButton} ref={startButtonRef}> Start </button>
         <img className="tomatoImage" src={tomato} ref={tomatoImageRef}/>
     </div>
     <div className="tomatoTimer"> 
