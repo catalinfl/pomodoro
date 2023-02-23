@@ -38,7 +38,7 @@ function Timer({ expiryTimestamp }: ExpireTime): JSX.Element {
 
     return (
         <div className="timerContainer"> 
-        <div className="workTimer" ref={timerRef}> 
+        <div className="workTimer" ref={timerRef}style={ (minutes === 0 && seconds >= 10 && seconds <= 40) ? { color: "orange"} : (minutes === 0 && seconds <= 10) ? { color: "red"} : { color: "white" } } > 
         {minutes >= 10
         ? <p> {minutes} </p>
         : <p> 0{minutes} </p>
@@ -50,10 +50,10 @@ function Timer({ expiryTimestamp }: ExpireTime): JSX.Element {
         }
         </div>
         <TomatoEffect margin={"5vw"}/>
-        <TomatoEffect margin={"20vw"}/>
         <TomatoEffect margin={"35vw"}/>
-        <TomatoEffect margin={"50vw"}/>
+        <TomatoEffect margin={"20vw"}/>
         <TomatoEffect margin={"75vw"}/>
+        <TomatoEffect margin={"50vw"}/>
         </div>
         )
 }

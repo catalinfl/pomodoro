@@ -1,6 +1,6 @@
 import React, { useLayoutEffect } from 'react'
 import TomatoImage from '../assets/tomato.svg'
-import gsap from 'gsap'
+import gsap, { Power3 } from 'gsap'
 
 
 
@@ -13,10 +13,11 @@ const TomatoEffect = ({ margin }: TomatoEffectType) => {
         let tween = gsap.fromTo(
             ".runningTomato", 
             {
-            y: -1500,
+            y: "-100vh",
             }, 
-            {y: 1500,
+            {y: "30vh",
             duration: 20,
+            ease: Power3.easeIn,
             stagger: 5
         }).repeat(-1)
     }, [])
