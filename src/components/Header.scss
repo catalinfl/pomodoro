@@ -6,6 +6,7 @@ $secondary-red: #ffcbcb;
     display: flex;
     padding-bottom: 1vw;
     background-color: $secondary-red;
+    z-index: 2;
 
     .header-principal {
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

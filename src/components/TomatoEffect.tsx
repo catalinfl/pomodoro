@@ -1,0 +1,30 @@
+import React, { useLayoutEffect } from 'react'
+import TomatoImage from '../assets/tomato.svg'
+import gsap from 'gsap'
+
+
+
+type TomatoEffectType = {
+    margin: string
+}
+
+const TomatoEffect = ({ margin }: TomatoEffectType) => {
+    useLayoutEffect(() => {
+        let tween = gsap.fromTo(
+            ".runningTomato", 
+            {
+            y: -1500,
+            }, 
+            {y: 1500,
+            duration: 20,
+            stagger: 5
+        }).repeat(-1)
+    }, [])
+
+
+  return (
+    <img src={TomatoImage} className="runningTomato" style={{marginLeft: margin}}/> 
+)
+}
+
+export default TomatoEffect

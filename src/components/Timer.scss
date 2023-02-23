@@ -1,0 +1,23 @@
+.timerContainer {    
+    
+@font-face {
+    font-family: LolaSans;
+    src: url('../assets/LolaSans-Bold.otf');
+}
+
+.workTimer {
+    justify-content: center;
+    color: white;
+    display: flex;
+    margin: auto;
+    border: solid 1px #000;
+    font-size: 150px;
+    font-family: LolaSans;
+    width: 30%;
+}
+
+.runningTomato {
+    width: 15vw;
+    position: absolute;
+}
+}

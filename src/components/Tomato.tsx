@@ -16,6 +16,7 @@ const Tomato = () => {
     const [pauseTime, setPauseTime] = useState<number>(0);
     const [maxValue, setMaxValue] = useState<boolean>(false);
     const [isTimerActive, setIsTimerActive] = useState<boolean>(false);
+    const [activateTimer, setActivateTimer] = useState<boolean>(false);
 
 
 
@@ -45,14 +46,14 @@ const Tomato = () => {
             .fromTo(".tomatoImage", 
             {x: 0},
             {x: -1000,
-            duration: 5,
+            duration: 3,
             opacity: 0,
             ease: Power2.easeInOut,
             rotate: "35deg"
         })
             .to(".inputContainer", {
                 x: -1000,
-                duration: 2,
+                duration: 0.5,
                 opacity: 0,
                 ease: Power1.easeOut
             })
@@ -94,6 +95,7 @@ const Tomato = () => {
         tomatoAnim.current?.remove();
         tomatoImageRef.current?.remove();
         startButtonRef.current?.remove();
+        setActivateTimer(true);
     }
 
     useEffect(() => {
@@ -151,8 +153,6 @@ const Tomato = () => {
         }
     }
 
-    console.log(workTime)
-
 
   return (
     <div className="principal"> 
@@ -168,13 +168,12 @@ const Tomato = () => {
     </div>
         <button className="tomatoStart" onClick={startButton} ref={startButtonRef}> Start </button>
         <img className="tomatoImage" src={tomato} ref={tomatoImageRef}/>
-    </div>
-    <div className="tomatoTimer"> 
-       { isTimerActive 
-       ? <Timer expiryTimestamp={testFunc()}/>
-       : null 
-        }
-    </div>
+        { activateTimer ? 
+        <div className="tomatoTimer"> 
+        <Timer expiryTimestamp={testFunc()}/>
+        </div>
+        : null }
+        </div>
     </div>
     )
 }
