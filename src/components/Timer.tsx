@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useLayoutEffect, useState } from 'react'
 import { useTimer } from 'react-timer-hook'
 import './Timer.scss'
-import gsap, { Cubic } from 'gsap'
+import gsap, { Cubic, Power3 } from 'gsap'
 import TomatoEffect from './TomatoEffect'
+import gsapTrial from 'gsap-trial'
 
 type ExpireTime = {
     expiryTimestamp: Date
@@ -17,19 +18,45 @@ function Timer({ expiryTimestamp }: ExpireTime): JSX.Element {
         setTimeout(() => {
         setTimerExpired(true)
         gsap.to(".workTimer", {
-            x: 300
+            opacity: 0,
+            duration: 1
         })
-        }, 3000)
+        gsap.to(".stop", {
+            x: -1500,
+            duration: 1,
+            ease: Power3.easeIn
+        })
+        gsap.to(".stopAnim", {
+            x: 1500,
+            duration: 1,
+            ease: Power3.easeIn
+        })
+        gsap.to(".workDialog", {
+            duration: 1,
+            scale: 2,
+            opacity: 0
+        })
+        setTimeout(() => { 
+            dialogRef.current?.remove()
+            timerRef.current?.remove()
+            buttonsRef.current?.remove()
         }
-    var { seconds, minutes, hours, days, isRunning, start, pause, resume, restart } = useTimer({
+            , 5000)
+    }, 2000)
+}
+
+
+var { seconds, minutes, hours, days, isRunning, start, pause, resume, restart } = useTimer({
         expiryTimestamp, onExpire: onExpire
     })
     
 
     const timerRef = useRef<HTMLDivElement>(null);
     const timeline = useRef<GSAPTimeline | null>(null)
-    const secondTimeline = useRef<GSAPTimeline | null>(null)
-    
+    // const secondTimeline = useRef<GSAPTimeline | null>(null)
+    const dialogRef = useRef<HTMLParagraphElement>(null)
+    const buttonsRef = useRef<HTMLDivElement>(null)
+
 
     useLayoutEffect(() => {
         timeline.current && timeline.current.progress(0).kill();
@@ -64,9 +91,10 @@ function Timer({ expiryTimestamp }: ExpireTime): JSX.Element {
     }
 
 
+
     return (
         <div className="timerContainer"> 
-        <p className="workDialog"> Working time &#9997; </p>
+        <p className="workDialog" ref={dialogRef}> Working time &#9997; </p>
         <div className="workTimer" ref={timerRef}style={ (minutes === 0 && seconds >= 10 && seconds <= 40) ? { color: "orange"} : (minutes === 0 && seconds <= 10) ? { color: "red"} : { color: "white" } } > 
         {minutes >= 10
         ? <p> {minutes} </p>
@@ -78,7 +106,7 @@ function Timer({ expiryTimestamp }: ExpireTime): JSX.Element {
         : <p> 0{seconds} </p>
         }
         </div>
-        <div className="buttonFlex"> 
+        <div className="buttonFlex" ref={buttonsRef}> 
         <button className="timerButton stop" onClick={pauseTime}> {isTimerNotPaused ? "Pause time" : "Time paused"} </button>
         <button className="timerButton stopAnim" onClick={() => setTomatoAnims(!tomatoAnims)}> {tomatoAnims ? "Stop tomato anims" : "Start tomato anims"} </button>
         </div>
