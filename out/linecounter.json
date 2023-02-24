@@ -1,0 +1,210 @@
+{
+    "extension": "linecounter",
+    "version": "0.2.7",
+    "workspace": "c:\\Users\\catal\\pomodoro",
+    "linecount": [
+        {
+            "version": "0.2.7",
+            "counttime": "2023-02-24 00:30:57",
+            "filesum": 25,
+            "codesum": 2700,
+            "commentsum": 13,
+            "blanksum": 149,
+            "statistics": {
+                ".ts": {
+                    "code": 6,
+                    "comment": 2,
+                    "blank": 1
+                },
+                ".json": {
+                    "code": 1726,
+                    "comment": 0,
+                    "blank": 65
+                },
+                ".scss": {
+                    "code": 152,
+                    "comment": 0,
+                    "blank": 36
+                },
+                ".tsx": {
+                    "code": 280,
+                    "comment": 0,
+                    "blank": 45
+                },
+                ".cjs": {
+                    "code": 16,
+                    "comment": 1,
+                    "blank": 0
+                },
+                ".svg": {
+                    "code": 493,
+                    "comment": 1,
+                    "blank": 0
+                },
+                ".html": {
+                    "code": 13,
+                    "comment": 0,
+                    "blank": 0
+                },
+                "": {
+                    "code": 14,
+                    "comment": 9,
+                    "blank": 2
+                }
+            },
+            "filelist": [
+                {
+                    "blank": 2,
+                    "code": 14,
+                    "comment": 9,
+                    "filename": ".gitignore"
+                },
+                {
+                    "blank": 0,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "index.html"
+                },
+                {
+                    "blank": 65,
+                    "code": 1668,
+                    "comment": 0,
+                    "filename": "package-lock.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 28,
+                    "comment": 0,
+                    "filename": "package.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "postcss.config.cjs"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "public\\vite.svg"
+                },
+                {
+                    "blank": 3,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": "src\\App.tsx"
+                },
+                {
+                    "filename": "src\\assets\\LolaSans-Bold.otf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 492,
+                    "comment": 1,
+                    "filename": "src\\assets\\tomato.svg"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "src\\components\\Footer.scss"
+                },
+                {
+                    "blank": 3,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "src\\components\\Footer.tsx"
+                },
+                {
+                    "blank": 5,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "src\\components\\Header.scss"
+                },
+                {
+                    "blank": 2,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "src\\components\\Header.tsx"
+                },
+                {
+                    "blank": 3,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "src\\components\\Timer.scss"
+                },
+                {
+                    "blank": 8,
+                    "code": 53,
+                    "comment": 0,
+                    "filename": "src\\components\\Timer.tsx"
+                },
+                {
+                    "blank": 24,
+                    "code": 108,
+                    "comment": 0,
+                    "filename": "src\\components\\Tomato.scss"
+                },
+                {
+                    "blank": 21,
+                    "code": 160,
+                    "comment": 0,
+                    "filename": "src\\components\\Tomato.tsx"
+                },
+                {
+                    "blank": 7,
+                    "code": 24,
+                    "comment": 0,
+                    "filename": "src\\components\\TomatoEffect.tsx"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "src\\index.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "src\\main.tsx"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 1,
+                    "filename": "src\\vite-env.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 1,
+                    "filename": "tailwind.config.cjs"
+                },
+                {
+                    "blank": 0,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "tsconfig.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "tsconfig.node.json"
+                },
+                {
+                    "blank": 1,
+                    "code": 6,
+                    "comment": 1,
+                    "filename": "vite.config.ts"
+                }
+            ]
+        }
+    ]
+}

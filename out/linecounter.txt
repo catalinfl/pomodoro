@@ -1,0 +1,49 @@
+===============================================================================
+EXTENSION NAME : linecounter
+EXTENSION VERSION : 0.2.7
+-------------------------------------------------------------------------------
+count time : 2023-02-24 00:30:57
+count workspace : c:\Users\catal\pomodoro
+total files : 25
+total code lines : 2700
+total comment lines : 13
+total blank lines : 149
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |            .ts|              6|              2|              1|   0.22|
+   |          .json|           1726|              0|             65|     64|
+   |          .scss|            152|              0|             36|    5.6|
+   |           .tsx|            280|              0|             45|     10|
+   |           .cjs|             16|              1|              0|   0.59|
+   |           .svg|            493|              1|              0|     18|
+   |          .html|             13|              0|              0|   0.48|
+   |               |             14|              9|              2|   0.52|
+   -------------------------------------------------------------------------
+.gitignore, code is 14, comment is 9, blank is 2.
+index.html, code is 13, comment is 0, blank is 0.
+package-lock.json, code is 1668, comment is 0, blank is 65.
+package.json, code is 28, comment is 0, blank is 0.
+postcss.config.cjs, code is 6, comment is 0, blank is 0.
+public\vite.svg, code is 1, comment is 0, blank is 0.
+src\App.tsx, code is 15, comment is 0, blank is 3.
+src\assets\LolaSans-Bold.otf, it is a binary file.
+src\assets\tomato.svg, code is 492, comment is 1, blank is 0.
+src\components\Footer.scss, code is 0, comment is 0, blank is 0.
+src\components\Footer.tsx, code is 9, comment is 0, blank is 3.
+src\components\Header.scss, code is 11, comment is 0, blank is 5.
+src\components\Header.tsx, code is 10, comment is 0, blank is 2.
+src\components\Timer.scss, code is 20, comment is 0, blank is 3.
+src\components\Timer.tsx, code is 53, comment is 0, blank is 8.
+src\components\Tomato.scss, code is 108, comment is 0, blank is 24.
+src\components\Tomato.tsx, code is 160, comment is 0, blank is 21.
+src\components\TomatoEffect.tsx, code is 24, comment is 0, blank is 7.
+src\index.scss, code is 13, comment is 0, blank is 4.
+src\main.tsx, code is 9, comment is 0, blank is 1.
+src\vite-env.d.ts, code is 0, comment is 1, blank is 0.
+tailwind.config.cjs, code is 10, comment is 1, blank is 0.
+tsconfig.json, code is 21, comment is 0, blank is 0.
+tsconfig.node.json, code is 9, comment is 0, blank is 0.
+vite.config.ts, code is 6, comment is 1, blank is 1.
+===============================================================================

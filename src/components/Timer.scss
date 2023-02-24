@@ -1,5 +1,7 @@
+$button-secondary-red: #d25454;
+
 .timerContainer {    
-    
+
 @font-face {
     font-family: LolaSans;
     src: url('../assets/LolaSans-Bold.otf');
@@ -10,14 +12,40 @@
     color: white;
     display: flex;
     margin: auto;
-    border: solid 1px #000;
-    font-size: 150px;
+    font-size: 15vw;
     font-family: LolaSans;
-    width: 30%;
 }
 
 .runningTomato {
     width: 15vw;
     position: absolute;
 }
+
+.buttonFlex {
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+
+
+    .timerButton {
+        color: white;
+        outline: none;
+        background-color: $button-secondary-red;
+        padding: 2vw;
+        border-radius: 1vw;
+        font-size: 1vw;
+        margin-top: 1vw;
+
+
+        &:hover {
+            background-color: #f82e2e;
+            transition: cubic-bezier(0.075, 0.82, 0.165, 1) 3s;
+        }
+    }
+}
+    .workDialog {
+        text-align: center;
+        color: white;
+        font-size: 3vw;
+    }
 }

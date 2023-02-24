@@ -153,15 +153,18 @@ const Tomato = () => {
         }
     }
 
+    console.log(workTime)
+    console.log(pauseTime)
+
 
   return (
     <div className="principal"> 
     <div className="tomato justify-center"> 
     <div className="inputContainer" ref={tomatoAnim}> 
         <p className="inputText"> Time at work (min) </p>
-        <input className="inputTime" type="text" ref={workRef} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTimer(e.target.value)} placeholder='Working time' max="100"/>
+        <input className="inputTime" type="number" ref={workRef} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTimer(e.target.value)} placeholder='Working time' max="100"/>
         <p className="inputText"> Time to pause (min) </p>
-        <input className="inputTime" type="text" ref={pauseRef} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPauseTimer(e.target.value)} value={pauseTime} max="100" />
+        <input className="inputTime" type="number" ref={pauseRef} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPauseTimer(e.target.value)} value={pauseTime} max="100" />
         {workTime >= 1 && workTime.toString() !== "NaN" ? 
         <p className="inputText"> You have {workTime} minutes of work, then {pauseTime} minutes of pause </p> : null}
         {maxValue ? <p className="inputText"> You have reached max value </p> : null }

@@ -13,7 +13,7 @@ const TomatoEffect = ({ margin }: TomatoEffectType) => {
         let tween = gsap.fromTo(
             ".runningTomato", 
             {
-            y: "-100vh",
+            y: "-170vh",
             }, 
             {y: "30vh",
             duration: 20,
