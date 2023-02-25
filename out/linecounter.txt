@@ -47,3 +47,55 @@ tsconfig.json, code is 21, comment is 0, blank is 0.
 tsconfig.node.json, code is 9, comment is 0, blank is 0.
 vite.config.ts, code is 6, comment is 1, blank is 1.
 ===============================================================================
+===============================================================================
+EXTENSION NAME : linecounter
+EXTENSION VERSION : 0.2.7
+-------------------------------------------------------------------------------
+count time : 2023-02-25 16:31:07
+count workspace : c:\Users\catal\pomodoro
+total files : 28
+total code lines : 2893
+total comment lines : 13
+total blank lines : 174
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |            .ts|              6|              2|              1|   0.21|
+   |          .json|           1741|              0|             65|     60|
+   |           .tsx|            437|              0|             58|     15|
+   |          .scss|            173|              0|             48|    6.0|
+   |           .cjs|             16|              1|              0|   0.55|
+   |          .html|             13|              0|              0|   0.45|
+   |               |             14|              9|              2|   0.48|
+   |           .svg|            493|              1|              0|     17|
+   -------------------------------------------------------------------------
+.gitignore, code is 14, comment is 9, blank is 2.
+index.html, code is 13, comment is 0, blank is 0.
+package-lock.json, code is 1681, comment is 0, blank is 65.
+package.json, code is 30, comment is 0, blank is 0.
+postcss.config.cjs, code is 6, comment is 0, blank is 0.
+public\pauseExpired.mp3, it is a binary file.
+public\vite.svg, code is 1, comment is 0, blank is 0.
+public\yay.mp3, it is a binary file.
+src\App.tsx, code is 15, comment is 0, blank is 3.
+src\assets\LolaSans-Bold.otf, it is a binary file.
+src\assets\tomato.svg, code is 492, comment is 1, blank is 0.
+src\components\Footer.scss, code is 0, comment is 0, blank is 0.
+src\components\Footer.tsx, code is 10, comment is 0, blank is 4.
+src\components\Header.scss, code is 10, comment is 0, blank is 5.
+src\components\Header.tsx, code is 10, comment is 0, blank is 2.
+src\components\PauseTimer.tsx, code is 58, comment is 0, blank is 8.
+src\components\Timer.scss, code is 42, comment is 0, blank is 15.
+src\components\Timer.tsx, code is 121, comment is 0, blank is 11.
+src\components\Tomato.scss, code is 108, comment is 0, blank is 24.
+src\components\Tomato.tsx, code is 190, comment is 0, blank is 22.
+src\components\TomatoEffect.tsx, code is 24, comment is 0, blank is 7.
+src\index.scss, code is 13, comment is 0, blank is 4.
+src\main.tsx, code is 9, comment is 0, blank is 1.
+src\vite-env.d.ts, code is 0, comment is 1, blank is 0.
+tailwind.config.cjs, code is 10, comment is 1, blank is 0.
+tsconfig.json, code is 21, comment is 0, blank is 0.
+tsconfig.node.json, code is 9, comment is 0, blank is 0.
+vite.config.ts, code is 6, comment is 1, blank is 1.
+===============================================================================

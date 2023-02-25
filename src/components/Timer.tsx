@@ -3,7 +3,7 @@ import { useTimer } from 'react-timer-hook'
 import './Timer.scss'
 import gsap, { Cubic, Power3 } from 'gsap'
 import TomatoEffect from './TomatoEffect'
-import gsapTrial from 'gsap-trial'
+import { Howl } from "howler"
 
 type ExpireTime = {
     expiryTimestamp: Date,
@@ -47,7 +47,11 @@ function Timer({ expiryTimestamp, startPauseTimeFunc }: ExpireTime): JSX.Element
             timerRef.current?.remove()
             buttonsRef.current?.remove()
         }
-            , 5000)
+        , 5000)
+        var sound = new Howl({
+            src: ['/yay.mp3']
+        })
+        sound.play()
     }, 2000)
 }
 

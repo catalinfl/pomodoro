@@ -1,14 +1,16 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import gsap, { Power3 } from 'gsap'
 import { useTimer } from 'react-timer-hook'
+import { Howl } from 'howler'
 
 type PauseTimerType = {
     expiryTimestamp: Date,
     stopPauseTimeFunc: () => void,
-    countPomodoros: number
 }
 
-const PauseTimer = ({ expiryTimestamp, stopPauseTimeFunc, countPomodoros }: PauseTimerType) => {
+const PauseTimer = ({ expiryTimestamp, stopPauseTimeFunc }: PauseTimerType) => {
+
+    const [bigPause, setBigPause] = useState<boolean>(false);
     const onExpire = () => {
         setTimeout(() => {
             gsap.to(".workDialog", {
@@ -20,14 +22,17 @@ const PauseTimer = ({ expiryTimestamp, stopPauseTimeFunc, countPomodoros }: Paus
             setTimeout(() => {
                 stopPauseTimeFunc()
             }, 3000)
+            var sound = new Howl({
+                src: ['/pauseExpired.mp3']
+            })    
+            sound.play()
         }, 2000)
     }
     
-    var { seconds, minutes, hours, days, isRunning, start, pause, resume, restart } = useTimer({
+    var { seconds, minutes } = useTimer({
         expiryTimestamp, onExpire: onExpire 
-    })    
-
-
+    })   
+    
 
     useLayoutEffect(() => {
         gsap.fromTo(".workTimer", {
@@ -48,7 +53,7 @@ const PauseTimer = ({ expiryTimestamp, stopPauseTimeFunc, countPomodoros }: Paus
         ? <p> {minutes} </p>
         : <p> 0{minutes} </p>
         }
-        :
+        : 
         {seconds >= 10 
         ? <p> {seconds} </p>
         : <p> 0{seconds} </p>

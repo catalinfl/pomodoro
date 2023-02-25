@@ -4,14 +4,12 @@ import tomato from '../assets/tomato.svg'
 import { useState } from 'react'
 import { useRef } from 'react'
 import gsap, { Power2, Power4, Power1 } from 'gsap'
-import { useTimer } from 'react-timer-hook'
 import Timer from './Timer'
 import PauseTimer from './PauseTimer'
 
 
 
 const Tomato = () => {
-    
     
     const [workTime, setWorkTime] = useState<number>(0);
     const [pauseTime, setPauseTime] = useState<number>(0);
@@ -20,22 +18,18 @@ const Tomato = () => {
     const [activateTimer, setActivateTimer] = useState<boolean>(false);
     const [startPauseTime, setStartPauseTime] = useState<boolean>(false);
     const [countPomodoros, setCountPomodoros] = useState<number>(0);
-    
+    const [isMinimumApplied, setIsMinimumApplied] = useState<boolean>(false);
     
     const tomatoAnim = useRef<HTMLDivElement>(null);
     const timeline = useRef<GSAPTimeline | null>(null);
     const tomatoImageRef = useRef<HTMLImageElement>(null)
-    const inputRef = useRef<HTMLDivElement>(null);
     const timelineDisappear = useRef<GSAPTimeline | null>(null);
     const startButtonRef = useRef<HTMLButtonElement>(null)
-    
     
     const startPauseTimeFunc = () => {
         setStartPauseTime(true);
         setCountPomodoros(countPomodoros+1);
     }
-
-    console.log(countPomodoros)
 
     const stopPauseTimeFunc = () => {
         setStartPauseTime(false);
@@ -157,15 +151,21 @@ const Tomato = () => {
     
     const workTimerFunc = (): Date => {
         const time = new Date();
-        time.setSeconds(time.getSeconds() + workTime)
+        time.setMinutes(time.getMinutes() + workTime)
         return time;
     }
 
 
     const pauseTimerFunc = (): Date => {
         const time = new Date();
-        time.setSeconds(time.getSeconds() + pauseTime)
-        return time;
+        if (countPomodoros % 4 !== 0) {
+            time.setMinutes(time.getMinutes() + pauseTime)
+            return time;
+        }
+        else {
+            time.setMinutes(time.getMinutes() + pauseTime * 3)
+            return time;
+        }
     }
 
     const startButton = () => {
@@ -174,17 +174,24 @@ const Tomato = () => {
         }
     }
 
-
+    const workTimeMin = (e: React.ChangeEvent<HTMLInputElement>) => {
+        var workTime = parseInt(e.target.value)
+        if (workTime >= 5) {
+            setTimer(workTime.toString())
+            setIsMinimumApplied(false)
+        }
+        else setIsMinimumApplied(true)
+    }
 
   return (
     <div className="principal"> 
     <div className="tomato justify-center"> 
     <div className="inputContainer" ref={tomatoAnim}> 
         <p className="inputText"> Time at work (min) </p>
-        <input className="inputTime" type="number" ref={workRef} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTimer(e.target.value)} placeholder='Working time' max="40" pattern="[0-9]"/>
+        <input className="inputTime" type="number" ref={workRef} onChange={(e: React.ChangeEvent<HTMLInputElement>) => workTimeMin(e)} placeholder='Working time' max="40" pattern="[0-9]"/>
         <p className="inputText"> Time to pause (min) </p>
         <input className="inputTime" type="number" ref={pauseRef} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPauseTimer(e.target.value)} value={pauseTime} max="40" />
-        {workTime >= 1 && workTime.toString() !== "NaN" ? 
+        {workTime >= 5 && workTime.toString() !== "NaN" ? 
         <p className="inputText"> You have {workTime} minutes of work, then {pauseTime} minutes of pause </p> : null}
         {maxValue ? <p className="inputText"> You have reached max value, maximum 40 minutes admitted </p> : null }
     </div>
@@ -192,7 +199,7 @@ const Tomato = () => {
         <img className="tomatoImage" src={tomato} ref={tomatoImageRef}/>
         { activateTimer ? 
         <div className="tomatoTimer"> 
-        { startPauseTime ? <PauseTimer expiryTimestamp={pauseTimerFunc()} stopPauseTimeFunc={stopPauseTimeFunc} countPomodoros={countPomodoros}/> :        
+        { startPauseTime ? <PauseTimer expiryTimestamp={pauseTimerFunc()} stopPauseTimeFunc={stopPauseTimeFunc}/> :        
         <Timer expiryTimestamp={workTimerFunc()} startPauseTimeFunc={startPauseTimeFunc}/>
         }
         </div>
