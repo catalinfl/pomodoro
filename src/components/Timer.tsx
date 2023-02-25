@@ -6,10 +6,11 @@ import TomatoEffect from './TomatoEffect'
 import gsapTrial from 'gsap-trial'
 
 type ExpireTime = {
-    expiryTimestamp: Date
+    expiryTimestamp: Date,
+    startPauseTimeFunc: () => void
 }
 
-function Timer({ expiryTimestamp }: ExpireTime): JSX.Element {
+function Timer({ expiryTimestamp, startPauseTimeFunc }: ExpireTime): JSX.Element {
     const [timerExpired, setTimerExpired] = useState<boolean>(false);
     const [isTimerNotPaused, setIsTimerNotPaused] = useState<boolean>(true);
     const [tomatoAnims, setTomatoAnims] = useState<boolean>(true);
@@ -36,7 +37,12 @@ function Timer({ expiryTimestamp }: ExpireTime): JSX.Element {
             scale: 2,
             opacity: 0
         })
+        gsap.to(".runningTomato", {
+            opacity: 0,
+            duration: 1
+        })
         setTimeout(() => { 
+            startPauseTimeFunc()
             dialogRef.current?.remove()
             timerRef.current?.remove()
             buttonsRef.current?.remove()
@@ -45,15 +51,12 @@ function Timer({ expiryTimestamp }: ExpireTime): JSX.Element {
     }, 2000)
 }
 
-
 var { seconds, minutes, hours, days, isRunning, start, pause, resume, restart } = useTimer({
         expiryTimestamp, onExpire: onExpire
-    })
-    
+    })    
 
     const timerRef = useRef<HTMLDivElement>(null);
     const timeline = useRef<GSAPTimeline | null>(null)
-    // const secondTimeline = useRef<GSAPTimeline | null>(null)
     const dialogRef = useRef<HTMLParagraphElement>(null)
     const buttonsRef = useRef<HTMLDivElement>(null)
 
@@ -90,8 +93,6 @@ var { seconds, minutes, hours, days, isRunning, start, pause, resume, restart } 
         else resume()
     }
 
-
-
     return (
         <div className="timerContainer"> 
         <p className="workDialog" ref={dialogRef}> Working time &#9997; </p>
@@ -119,6 +120,7 @@ var { seconds, minutes, hours, days, isRunning, start, pause, resume, restart } 
         <TomatoEffect margin={"50vw"}/>
         </div>
         : null}
+
         </div>
         )
 }
