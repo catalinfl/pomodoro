@@ -124,7 +124,6 @@ var { seconds, minutes, hours, days, isRunning, start, pause, resume, restart } 
         <TomatoEffect margin={"50vw"}/>
         </div>
         : null}
-
         </div>
         )
 }
